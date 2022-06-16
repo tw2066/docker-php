@@ -1,13 +1,8 @@
 
-#docker build -t 8.0-alpine-v3.16-base .
+#docker build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.0-alpine-v3.16-swoole .
+ARG ALPINE_VERSION
 
-FROM 8.0-alpine-v3.16-base
-
-#指定docker安装源
-#apk add php8-pecl-xlswriter --repository http://nl.alpinelinux.org/alpine/edge/testing
-#apk add php8-pecl-grpc --repository http://nl.alpinelinux.org/alpine/edge/testing
-#apk add php8-mongodb --repository https://php.hernandev.com/v3.15/php-8.0
-#apk add php8-pecl-xmlrpc --repository http://nl.alpinelinux.org/alpine/edge/testing
+FROM tw2066/php:8.0-alpine-v${ALPINE_VERSION}-base
 
 RUN set -ex \
     && apk update \
@@ -17,7 +12,9 @@ RUN set -ex \
     && echo "swoole.use_shortname = 'Off'" >> /etc/php8/conf.d/50_swoole.ini \
     && echo "memory_limit=1G" > /etc/php8/conf.d/00_default.ini \
     && echo "opcache.enable_cli = 'On'" >> /etc/php8/conf.d/00_opcache.ini \
-    && rm -rf /tmp/* /usr/share/man /usr/share/php8 \
+    && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /usr/share/php8 \
     && php -v \
     && php -m \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
+
+EXPOSE 9501
