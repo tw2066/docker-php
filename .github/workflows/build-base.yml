@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   build1:
-    name: Build Base Image
+    name: ubuntu-latest
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout code
@@ -14,7 +14,7 @@ jobs:
       - name: Uname
         run: uname -a
   build2:
-    name: Build Base Image
+    name: macos-latest
     runs-on: 'macos-latest'
     steps:
       - name: Checkout code
@@ -22,8 +22,8 @@ jobs:
       - name: Uname
         run: uname -a
   build3:
-    name: Build Base Image
-    runs-on: 'self-hosted'
+    name: macos-12
+    runs-on: 'macos-12'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
