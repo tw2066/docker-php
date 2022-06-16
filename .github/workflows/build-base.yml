@@ -1,0 +1,31 @@
+name: Build Base Image
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build1:
+    name: Build Base Image
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Uname
+        run: uname -a
+  build2:
+    name: Build Base Image
+    runs-on: 'macos-latest'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Uname
+        run: uname -a
+  build3:
+    name: Build Base Image
+    runs-on: 'self-hosted'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Uname
+        run: uname -a
