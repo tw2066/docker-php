@@ -1,8 +1,8 @@
 
+#docker build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.0-alpine-v3.16-dev .
+ARG ALPINE_VERSION
 
-FROM alpine:3.16
-
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+FROM tw2066/php:8.0-alpine-v${ALPINE_VERSION}-base
 
 ENV PHPIZE_DEPS="autoconf dpkg-dev dpkg file g++ gcc libc-dev make php8-dev php8-pear pkgconf re2c pcre-dev pcre2-dev zlib-dev libtool automake"
 
