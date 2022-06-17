@@ -12,7 +12,7 @@ FROM tw2066/php:8.0-alpine-v${ALPINE_VERSION}-base
 
 RUN set -ex \
     && apk update \
-    && apk add --no-cache composer openssl git bash \
+    && apk add --no-cache openssl git bash \
     php8-fpm \
 #    php8-ftp \
 #    php8-pecl-mcrypt \

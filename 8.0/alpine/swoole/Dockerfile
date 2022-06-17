@@ -6,7 +6,7 @@ FROM tw2066/php:8.0-alpine-v${ALPINE_VERSION}-base
 
 RUN set -ex \
     && apk update \
-    && apk add --no-cache composer openssl git bash \
+    && apk add --no-cache openssl git bash \
     php8-pecl-swoole \
     && apk del --purge *-dev \
     && echo "swoole.use_shortname = 'Off'" >> /etc/php8/conf.d/50_swoole.ini \

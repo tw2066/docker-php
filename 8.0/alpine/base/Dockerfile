@@ -58,6 +58,10 @@ RUN set -ex \
     php8-xmlwriter \
     php8-pcntl \
     php8-opcache \
+    && ln -sf /usr/bin/php80 /usr/bin/php \
+    # install composer
+    && wget -nv -O /usr/local/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
+    && chmod u+x /usr/local/bin/composer \
     && apk del --purge *-dev \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /usr/share/php8 \
     && php -v \

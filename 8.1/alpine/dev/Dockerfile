@@ -1,0 +1,24 @@
+
+#docker build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.1-alpine-v3.16-dev .
+#docker buildx build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.1-alpine-v3.16-dev  --platform=linux/arm,linux/arm64,linux/amd64 . --push
+
+ARG ALPINE_VERSION
+
+FROM tw2066/php:8.1-alpine-v${ALPINE_VERSION}-base
+
+ENV PHPIZE_DEPS="autoconf dpkg-dev dpkg file g++ gcc libc-dev make php81-dev php81-pear pkgconf re2c pcre-dev pcre2-dev zlib-dev libtool automake"
+
+# update
+RUN set -ex \
+    && apk update \
+    && apk add --no-cache libstdc++ composer openssl git bash \
+    && apk add --no-cache $PHPIZE_DEPS libaio-dev openssl-dev curl-dev \
+    && ln -s /usr/bin/phpize81 /usr/local/bin/phpize \
+    && ln -s /usr/bin/php-config81 /usr/local/bin/php-config \
+    && ln -s /usr/bin/pecl81 /usr/local/bin/pecl \
+    # php info
+    && php -v \
+    && php -m \
+    # ---------- clear works ----------
+    && rm -rf /var/cache/apk/* /tmp/* /usr/share/man \
+    && echo -e "\033[42;37m Build Completed :).\033[0m\n"
