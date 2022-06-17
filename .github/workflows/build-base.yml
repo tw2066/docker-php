@@ -13,19 +13,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Uname
         run: uname -a
-  build2:
-    name: macos-latest
-    runs-on: 'macos-latest'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
-  build3:
-    name: macos-12
-    runs-on: 'macos-12'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
+      - name: ll
+        run: ll
+      - name: tree
+        run: tree /
+      - name: pwd
+        run: pwd
