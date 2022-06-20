@@ -13,9 +13,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Uname
         run: uname -a
-      - name: pwd
-        run: pwd
-      - name: ls
-        run: ls
-      - name: tree
-        run: tree ./
+      - name: buildx
+        run: docker buildx ls

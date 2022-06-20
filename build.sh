@@ -16,7 +16,7 @@ for tag in base; do
     cd "${current_dir}/${dir}/alpine/$tag"
     echo $(pwd);
 #    docker_shell="docker build --build-arg ALPINE_VERSION=${alpine_version}  -t tw2066/php:${php_version}-alpine-v${alpine_version}-${tag} ."
-    docker_shell="docker buildx build --build-arg ALPINE_VERSION=${alpine_version}  -t tw2066/php:${php_version}-alpine-v${alpine_version}-${tag} --platform=linux/arm,linux/arm64,linux/amd64 . --push"
+    docker_shell="docker buildx build --build-arg ALPINE_VERSION=${alpine_version}  -t tw2066/php:${php_version}-alpine-v${alpine_version}-${tag} --platform=linux/arm64,linux/amd64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 . --push"
     echo $docker_shell;
     $($docker_shell)
 done
