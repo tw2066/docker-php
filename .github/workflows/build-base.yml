@@ -5,28 +5,8 @@ on:
     branches:
       - master
 jobs:
-  build1:
-    name: ubuntu-latest
-    runs-on: 'ubuntu-latest'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
-      - name: buildx
-        run: docker buildx ls && docker buildx version
-  build2:
-    name: ubuntu-latest
-    runs-on: 'macos-latest'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
-      - name: buildx
-        run: docker buildx ls
   build4:
-    name: ubuntu-latest
+    name: build4-latest
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout code
@@ -36,7 +16,7 @@ jobs:
       - name: buildx
         run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
   build5:
-    name: ubuntu-latest
+    name: build4-latest
     runs-on: 'macos-latest'
     steps:
       - name: Checkout code
