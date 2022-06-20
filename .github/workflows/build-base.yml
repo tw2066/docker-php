@@ -16,7 +16,7 @@ jobs:
       - name: apt update
         run: sudo apt-get update
       - name: docker --version
-        run: sudo apt-get install docker.io && docker --version
+        run: docker --version
       - name: buildx
         run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
 
@@ -28,8 +28,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Uname
         run: uname -a
-      - name: brew install --cask docker && docker --version
-        run: sudo apt-get update
+      - name: install
+        run: brew install --cask docker && docker --version
       - name: buildx
         run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
 
