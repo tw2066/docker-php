@@ -13,16 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Uname
         run: uname -a
-      - name: buildx
-        run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
-  build5:
-    name: build4-latest
-    runs-on: 'macos-latest'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
+      - name: apt update
+        run: sudo apt-get update
       - name: buildx
         run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
 
