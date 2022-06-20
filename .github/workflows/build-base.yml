@@ -1,36 +1,29 @@
-name: Build Base Image
+name: Build PHP Image
 
 on:
   push:
     branches:
       - master
+
+env:
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_ACCESSTOKEN }}
+
 jobs:
-  build1:
-    name: build1-latest
+  build80:
+    name: build-php-80
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
-      - name: apt update
-        run: sudo apt-get update
+
+      - name: docker login
+        run: docker login --username tw2066 -p $DOCKERHUB_TOKEN
+
       - name: docker --version
         run: docker --version
-      - name: buildx
+
+      - name: docker buildx create
         run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
 
-  build2:
-    name: macos-latest
-    runs-on: 'macos-latest'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
-      - name: install
-        run: brew install --cask docker && docker --version
-      - name: buildx
-        run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
-
-
+      - name: docker buildx and push
+        run: ./.github/workflows/build.sh 8.0 8.0 3.16 base
