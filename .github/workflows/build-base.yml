@@ -25,16 +25,6 @@ jobs:
         run: uname -a
       - name: buildx
         run: docker buildx ls
-  build3:
-    name: ubuntu-latest
-    runs-on: 'ubuntu-latest'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Uname
-        run: uname -a
-      - name: buildx
-        run:
   build4:
     name: ubuntu-latest
     runs-on: 'ubuntu-latest'
