@@ -3,8 +3,7 @@
 #linux/arm64,linux/amd64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
 #docker build --build-arg ALPINE_VERSION=3.8 -t tw2066/php:5.6-alpine-v3.8-fpm .
 
-#docker buildx build --build-arg ALPINE_VERSION=3.8 -t tw2066/php:5.6-alpine-v3.8-fpm --platform=linux/amd64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v6 . --push
-
+##/Users/tangwei/WWW/test/laravel-demo/www
 
 
 ARG ALPINE_VERSION

@@ -22,8 +22,8 @@ jobs:
       - name: docker --version
         run: docker --version
 
-      - name: docker buildx create
-        run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
+#      - name: docker buildx create
+#        run: docker buildx create --use --name mybuilder && docker buildx inspect mybuilder --bootstrap && docker buildx ls
 
-      - name: docker buildx and push
-        run: ./.github/workflows/build.sh 8.0 8.0 3.16 base
+#      - name: docker buildx and push
+#        run: ./.github/workflows/build.sh 8.0 8.0 3.16 base

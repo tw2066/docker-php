@@ -1,6 +1,7 @@
 
 #docker build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.1-alpine-v3.16-base .
-#docker buildx build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.1-alpine-v3.16-base  --platform=linux/arm,linux/arm64,linux/amd64 . --push
+#linux/arm64, linux/amd64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
+#docker buildx build --build-arg ALPINE_VERSION=3.16 -t tw2066/php:8.1-alpine-v3.16-base  --platform=linux/arm64,linux/amd64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 . --push
 
 ARG ALPINE_VERSION
 
