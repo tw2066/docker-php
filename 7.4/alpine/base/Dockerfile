@@ -32,6 +32,7 @@ RUN set -ex \
     php7-iconv \
     php7-mbstring \
     php7-mysqlnd \
+    php7-mysqli \
     php7-openssl \
     php7-pdo \
     php7-pdo_mysql \
